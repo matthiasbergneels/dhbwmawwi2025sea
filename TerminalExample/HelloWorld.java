@@ -1,6 +1,15 @@
-class HelloWorld {
+/** HelloWorld class as first programming example
+* @author Matthias Berg-Neels
+* @version 1.0
+* @since 1.0
+*/
+public class HelloWorld {
 
-	public static void main(String[] args){
-		System.out.println("Hello WWI2025SEA!");
-	}
+  /** main method as starting point for program start
+  * @param args String array for parameters from the console
+  */
+  public static void main (String[] args){
+
+    System.out.println("Hello WWI2025SEA!");
+  }
 }
