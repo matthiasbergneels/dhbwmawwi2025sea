@@ -20,11 +20,11 @@ public class DatatypeExamples {
     int myThirdInt = 10, myFourthInt = myThirdInt, myFifthInt;
 
     // Declare a double constant PI
-    final double PI;
+    final double PI_VALUE;
     // Initialize the constant PI
-    PI = 3.14159;
+    PI_VALUE = 3.14159;
 
-    System.out.println("The value of PI is: " + PI);
+    System.out.println("The value of PI is: " + PI_VALUE);
 
     // Declare and initialize a character constant
     final char MY_CONSTANT_CHAR = '!';
@@ -53,7 +53,55 @@ public class DatatypeExamples {
     byte myFirstShortVariable = 5;
     // myFirstShortVariable = 128; --> value to big for byte
 
-    
+    // float / double literal examples
+    double mySecondDoubleVariable = 1.5;
+    mySecondDoubleVariable = .5;
+    mySecondDoubleVariable = 1.;
+    mySecondDoubleVariable = 1.5d;
+    mySecondDoubleVariable = 1.5e2;
 
+    System.out.println("Double Variable: " + mySecondDoubleVariable);
+
+    mySecondDoubleVariable = 1.5e-2;
+
+    System.out.println("Double Variable: " + mySecondDoubleVariable);
+
+    float myThirdFloatVariable = 1.5f;
+
+    // Alpha Numeric literals
+
+    boolean isTired = true; // false
+
+    char myFirstChar = 'a';
+    System.out.println("Char variable: " + myFirstChar);
+    myFirstChar = '!';
+    System.out.println("Char variable: " + myFirstChar);
+    myFirstChar = '\u2764';
+    System.out.println("Char variable: " + myFirstChar + "!");
+    myFirstChar = '\n';
+    System.out.println("Char variable: " + myFirstChar + "!");
+
+
+    String mySecondString = "Hello";
+    System.out.println("Sring variable: " + mySecondString);
+    mySecondString = "Hello Welt!\nHier geht \tes weiter! \\ Backslash - hier steht etwas ganz \"wichtiges\" \u2764";
+    System.out.println("Sring variable: " + mySecondString);
+
+    String html = "<html>\n" +
+      "\t<body>\n" +
+      "\t\t<p>Hello, world</p>\n" +
+      "\t</body>\n" +
+      "</html>";
+
+    System.out.println(html);
+
+    String html_block = """
+      <html>
+        <body>
+          <h1>Hello "World" \u2764</h1>
+        </body>
+      </html>
+      """;
+    System.out.println(html_block);
   }
 }
