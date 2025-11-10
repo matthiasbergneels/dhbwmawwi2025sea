@@ -62,5 +62,37 @@ public class OperatorExamples {
     valueA *= valueB; // => valueA = valueA * valueB;
 
 
+    valueA = 1;
+    valueB = 5;
+
+    // ?-Operator
+
+    int biggerNumber = (valueA > valueB) ? valueA : valueB;
+
+    System.out.println("Die größere Zahl: " + biggerNumber);
+    System.out.println("Brauche ich einen Regenschirm? " + ((isRaining && mustLeaveHome) ? "Ja" : "Nein"));
+
+    // (Cast)-Operator
+    byte smallNumber = (byte)valueA;
+
+    valueA = 97;
+
+    char signA = (char)valueA;
+    System.out.println(valueA);
+    System.out.println(signA);
+
+    System.out.println(valueA == signA);
+
+    signA = 0x1125;
+    System.out.println(signA);
+
+    //System.out.println(isRaining ? 1 : 0 );
+
+    // Zeichenkettenverknüpfungsoperator
+    valueB = 3;
+    signA = 'a';
+
+    String concatenatedText = "Hallo" + " " + "Klaus";
+    System.out.println(signA + valueA + valueB + concatenatedText + " das ist ein langer Text!" + valueA + valueB + signA);
   }
 }
