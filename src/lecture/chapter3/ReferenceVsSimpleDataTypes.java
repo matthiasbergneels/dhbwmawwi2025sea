@@ -10,6 +10,7 @@ public class ReferenceVsSimpleDataTypes {
     System.out.println(myFirstNumber);
     System.out.println(mySecondNumber);
 
+    // Call by Value --> der Wert wird kopiert
     mySecondNumber = myFirstNumber;
 
     System.out.println(myFirstNumber);
@@ -24,6 +25,7 @@ public class ReferenceVsSimpleDataTypes {
     String[] goodTeacherGrade = {"Der", "Dozent", "ist", "toll"};
     String[] badTeacherGrade;
 
+    // Call by Reference --> die Speicheradresse wird kopiert
     badTeacherGrade = goodTeacherGrade;
 
     System.out.println(goodTeacherGrade[3]);

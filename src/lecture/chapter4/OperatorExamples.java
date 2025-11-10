@@ -8,8 +8,7 @@ public class OperatorExamples {
     int valueB = 13;
     int result;
 
-    // Modulo operator
-
+    // Modulo operator --> Restwert-Operator
     result = valueB % valueA;
 
     System.out.println("Restwert (Modulo) 13 % 5: " + result);
@@ -40,13 +39,27 @@ public class OperatorExamples {
     System.out.println(valueA + " gleich " + valueB + "? " + (valueA == valueB));
     System.out.println(valueA + " ungleich " + valueB + "? " + (valueA != valueB));
 
-
     // logical operators
 
     boolean isRaining = false;
     boolean mustLeaveHome = true;
 
     System.out.println("Brauche ich einen Regenschirm? " + (isRaining && mustLeaveHome));
+
+
+    // && - with short curcuit evaluation
+    String myText = null;
+
+    if(myText != null && myText.length() > 5) {
+      System.out.println(myText.length());
+    } else {
+      System.out.println("Text existiert nicht!");
+    }
+
+
+    // Zuweisungs-Operatoren
+    valueA += valueB; // => valueA = valueA + valueB;
+    valueA *= valueB; // => valueA = valueA * valueB;
 
 
   }
