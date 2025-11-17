@@ -106,7 +106,9 @@ void main(){
   currentWeekday = "TUESDAY";
 
   int numLetters = switch (currentWeekday) {
-    case "MONDAY", "FRIDAY", "SUNDAY" -> 6;
+    case "MONDAY", "FRIDAY", "SUNDAY" -> {
+      yield 6;
+    }
     case "TUESDAY" -> 7;
     default -> {
       int result = currentWeekday.length();
