@@ -7,8 +7,9 @@ public class CarRun{
     String newColor = "Orange";
     int standardHp = 250;
 
-    Car myCar = new Car(newColor, standardHp, "HD-CC 1234");
-    Car yourCar = new Car("Blau", 500, "MA-ZZ 9876");
+    Car myCar = new Car(newColor, standardHp, "HD-CC 1234", CarBrand.MERCEDES);
+    Car yourCar = new Car("Kackbraun", 500, "MA-ZZ 9876",  CarBrand.AUDI);
+    // Car hisCar = new Car("Blau", 500, "MA-ZZ 9876",  CarBrand.MITSUBISHI);
 
     Car racingCar = new Car(999, "HD-RR 9876");
     // call by Reference

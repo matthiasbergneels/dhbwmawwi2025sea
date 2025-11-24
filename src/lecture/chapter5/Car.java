@@ -7,25 +7,27 @@ public class Car {
   private int hp = 0;
   private double currentSpeed;
   private String licensePlate;
+  private final CarBrand brand;
   protected String attribute;
 
   // Konstruktoren
-  public Car(String color, int hp, String licensePlate) {
-    this.color = color;
+  public Car(String color, int hp, String licensePlate, CarBrand brand) {
+    this.setColor(color);
     this.hp = hp;
     this.licensePlate = licensePlate;
+    this.brand = brand;
 
     this.currentSpeed = 0;
   }
 
   public Car(){
-    this("Schwarz", 150, "XX-YY 1234");
+    this("Schwarz", 150, "XX-YY 1234", CarBrand.KIA);
 
     this.currentSpeed = 10;
   }
 
   public Car(int hp, String licensePlate) {
-    this("Schwarz",  hp, licensePlate);
+    this("Schwarz",  hp, licensePlate, CarBrand.KIA);
 
     /*this.hp = hp;
     this.licensePlate = licensePlate;
@@ -51,6 +53,9 @@ public class Car {
 
   double brake(){
     currentSpeed = currentSpeed - 5;
+    if(currentSpeed < 0){
+      currentSpeed = 0;
+    }
     return currentSpeed;
   }
 
@@ -75,7 +80,7 @@ public class Car {
 
   public void setColor(String color){
     // Plausibilitätsprüfungen
-    if(color.equals("Blau") || color.equals("Lila") || color.equals("Orange")){
+    if(color.equals("Blau") || color.equals("Lila") || color.equals("Orange") || color.equals("Pink")){
       this.color = color;
     } else {
       if(this.color == null) {
