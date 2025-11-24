@@ -18,6 +18,24 @@ public class Car {
     this.currentSpeed = 0;
   }
 
+  public Car(){
+    this("Schwarz", 150, "XX-YY 1234");
+
+    this.currentSpeed = 10;
+  }
+
+  public Car(int hp, String licensePlate) {
+    this("Schwarz",  hp, licensePlate);
+
+    /*this.hp = hp;
+    this.licensePlate = licensePlate;
+
+    this.color = "Schwarz";
+    this.currentSpeed = 0;
+
+     */
+  }
+
 
   // Methoden
 

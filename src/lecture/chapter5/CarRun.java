@@ -9,6 +9,8 @@ public class CarRun{
 
     Car myCar = new Car(newColor, standardHp, "HD-CC 1234");
     Car yourCar = new Car("Blau", 500, "MA-ZZ 9876");
+
+    Car racingCar = new Car(999, "HD-RR 9876");
     // call by Reference
     Car secondKeyToCar = myCar;
 
@@ -41,7 +43,7 @@ public class CarRun{
 
     System.out.println("Mein Auto hat " + myCar.getHp() + " PS.");
 
-    Double currentSpeedOfMyCar = myCar.accelerate(10);
+    Double currentSpeedOfMyCar = myCar.accelerate(45);
     System.out.println("Mein Auto hat die Geschwindigkeit " + currentSpeedOfMyCar + " km/h");
 
     System.out.println("Mein Auto hat die Geschwindigkeit " + myCar.brake() + " km/h");
