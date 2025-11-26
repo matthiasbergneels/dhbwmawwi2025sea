@@ -101,6 +101,14 @@ public class Car {
 
   }
 
+  /* --> Aufräumen mit der Finalize Methode depricated und gelöscht!
+  @Override
+  protected void finalize() {
+    System.out.println("Auto der Marke " + this.brand  + " wird verschrottet!");
+    carCount--;
+  }
+   */
+
   // Klassen-Methoden
   public static int getCarCount() {
     // IO.println("Car Count: " + color); --> Kein Zugriff aus dem Klassenkontext auf Instanzkontext

@@ -69,7 +69,18 @@ public class CarRun{
     myCar = null;
     secondKeyToCar = null;
 
+    /* --> Aufräumen mit der Finalize Methode
     // Aufräumen
+    myCar = null;
+    secondKeyToCar = null;
+
+    // Aufräumen
+    System.gc();
+
+    System.out.println("Warte 2 Sekunden");
+    Thread.sleep(2000);
+    System.out.println("Jetzt geht es weiter!");
+     */
 
     IO.println("Aktuelle Anzahl an Autos: " + Car.getCarCount());
   }
