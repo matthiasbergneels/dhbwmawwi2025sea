@@ -11,5 +11,10 @@ public class HelloWorld {
   public static void main (String[] args){
 
     System.out.println("Hello WWI2025SEA!");
-  }
+
+	for(String argument : args){
+		System.out.println(argument);
+	} 
+
+ }
 }

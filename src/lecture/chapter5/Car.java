@@ -2,13 +2,23 @@ package lecture.chapter5;
 
 public class Car {
 
-  // Attribute
+  // Instanz-Attribute
   private String color;
   private int hp = 0;
   private double currentSpeed;
   private String licensePlate;
   public final CarBrand brand;
   protected String attribute;
+
+  // Klassen-Attribute
+  private static int carCount;
+
+  public static final String COLOR_RED = "ROT";
+  public static final String COLOR_BLUE = "Blau";
+  public static final String COLOR_BLACK = "Schwarz";
+  public static final String COLOR_PINK = "Pink";
+  public static final String COLOR_ORANGE = "Orange";
+
 
   // Konstruktoren
   public Car(String color, int hp, String licensePlate, CarBrand brand) {
@@ -18,6 +28,7 @@ public class Car {
     this.brand = brand;
 
     this.currentSpeed = 0;
+    carCount++;
   }
 
   public Car(){
@@ -80,14 +91,27 @@ public class Car {
 
   public void setColor(String color){
     // Plausibilitätsprüfungen
-    if(color.equals("Blau") || color.equals("Lila") || color.equals("Orange") || color.equals("Pink")){
+    if(color.equals(COLOR_BLUE) || color.equals(COLOR_BLACK) || color.equals(COLOR_ORANGE) || color.equals(COLOR_PINK) || color.equals(COLOR_RED)){
       this.color = color;
     } else {
       if(this.color == null) {
-        this.color = "Schwarz";
+        this.color = COLOR_BLACK;
       }
     }
 
   }
 
+  // Klassen-Methoden
+  public static int getCarCount() {
+    // IO.println("Car Count: " + color); --> Kein Zugriff aus dem Klassenkontext auf Instanzkontext
+    return carCount;
+  }
+
+  public static void printCarInformation(Car currentCar){
+    IO.println("Marke: " + currentCar.brand);
+    IO.println("Farbe: " + currentCar.color);
+    IO.println("Leistung: " + currentCar.hp);
+    IO.println("Nummernschild: " + currentCar.licensePlate);
+
+  }
 }

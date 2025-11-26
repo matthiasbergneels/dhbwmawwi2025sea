@@ -4,8 +4,8 @@ public class Ggt {
 
     public static void main(String[] args) {
 
-        int numberA = 240;
-        int numberB = 70;
+      int numberA = 240;
+      int numberB = 70;
 
         if(numberA == 0 || numberB == 0){
             System.out.println("NumberA und/oder NumberB dürfen nicht 0 sein.");

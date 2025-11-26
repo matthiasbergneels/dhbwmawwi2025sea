@@ -2,16 +2,22 @@ package lecture.chapter5;
 
 public class CarRun{
 
+
   public static void main(String[] args){
+
+    IO.println("Aktuelle Anzahl an Autos: " + Car.getCarCount());
 
     String newColor = "Orange";
     int standardHp = 250;
 
-    Car myCar = new Car(newColor, standardHp, "HD-CC 1234", CarBrand.MERCEDES);
+    Car myCar = new Car(Car.COLOR_ORANGE, standardHp, "HD-CC 1234", CarBrand.MERCEDES);
     Car yourCar = new Car("Kackbraun", 500, "MA-ZZ 9876",  CarBrand.AUDI);
     // Car hisCar = new Car("Blau", 500, "MA-ZZ 9876",  CarBrand.MITSUBISHI);
 
     Car racingCar = new Car(999, "HD-RR 9876");
+
+    IO.println("Aktuelle Anzahl an Autos: " + Car.getCarCount());
+
     // call by Reference
     Car secondKeyToCar = myCar;
 
@@ -52,6 +58,20 @@ public class CarRun{
     System.out.println("Mein Auto hat die Geschwindigkeit " + myCar.getCurrentSpeed() + " km/h");
 
 
+    Car.printCarInformation(myCar);
+    Car.printCarInformation(yourCar);
+
+
+    new Car();
+    new Car();
+    new Car();
+
+    myCar = null;
+    secondKeyToCar = null;
+
+    // Aufräumen
+
+    IO.println("Aktuelle Anzahl an Autos: " + Car.getCarCount());
   }
 
 
