@@ -7,7 +7,7 @@ public class Car {
   private int hp = 0;
   private double currentSpeed;
   private String licensePlate;
-  private final CarBrand brand;
+  public final CarBrand brand;
   protected String attribute;
 
   // Konstruktoren

@@ -2,7 +2,7 @@ package lecture.chapter5;
 
 public class CarRun{
 
-  public static void main(String[] args) {
+  public static void main(String[] args){
 
     String newColor = "Orange";
     int standardHp = 250;
@@ -29,8 +29,8 @@ public class CarRun{
     //myCar.hp = 250;
     //yourCar.hp = 500;
 
-    System.out.println("Mein Auto hat die Farbe: " + myCar.getColor());
-    System.out.println("Dein Auto hat die Farbe: " + yourCar.getColor());
+    System.out.println("Mein Auto hat die Farbe: " + myCar.getColor() + " von der Marke " + myCar.brand + "(Preisklasse " + myCar.brand.getPriceClass()+")");
+    System.out.println("Dein Auto hat die Farbe: " + yourCar.getColor() + " von der Marke " + yourCar.brand + "(Preisklasse " + yourCar.brand.getPriceClass()+")");
 
     System.out.println("Mein Auto hat die Farbe: " + secondKeyToCar.getColor());
 
@@ -50,7 +50,6 @@ public class CarRun{
     System.out.println("Mein Auto hat die Geschwindigkeit " + myCar.brake() + " km/h");
     myCar.brake();
     System.out.println("Mein Auto hat die Geschwindigkeit " + myCar.getCurrentSpeed() + " km/h");
-
 
 
   }
