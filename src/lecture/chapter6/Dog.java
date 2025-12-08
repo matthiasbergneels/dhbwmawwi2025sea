@@ -14,6 +14,11 @@ public class Dog extends Animal{
   }
 
   @Override
+  public void breath() {
+    IO.println("Der Hund " + this.getDescription() + " atmet! *hechel*");
+  }
+
+  @Override
   public void eat(){
     super.eat();
     IO.println("Hunde fressen Fleisch");
@@ -32,4 +37,22 @@ public class Dog extends Animal{
   public void setBreed(String breed) {
     this.breed = breed;
   }
+
+
+  @Override
+  public String toString() {
+    return super.toString() + "; Rasse: " +  breed;
+
+  }
+
+  /*
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+   */
+
+
+
+
 }

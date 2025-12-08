@@ -4,12 +4,15 @@ public class MyLittleFarm {
 
   public static void main(String[] args) {
 
-    Animal myAnimal = new Animal(10.0f, 15.5f, "Jannes");
+    /* --> Animal ist abstract
+    Animal myAnimal = new Animal(10.0f, 15.5f, "Karsten");
 
     myAnimal.breath();
     myAnimal.eat();
     myAnimal.move();
     //myAnimal.bark();
+    IO.println(myAnimal.toString());
+     */
 
 
     Dog myDog = new Dog(76, 70, "Bello", "Schäferhund");
@@ -19,6 +22,7 @@ public class MyLittleFarm {
     myDog.eat(0.5f);
     myDog.move();
     myDog.bark();
+    IO.println(myDog.toString());
 
     Bird myBird = new Bird(10, 9, "Tweety", true);
 
@@ -29,6 +33,54 @@ public class MyLittleFarm {
     myBird.tweet();
     //myBird.bark();
 
+    IO.println(myBird);
+
+    // Narrowing Cast --> einschränken der Sichbarkeit für das tatsächliche Objekt
+    Animal currentAnimal = myDog;
+
+    currentAnimal.move();
+    //currentAnimal.bark();
+
+    currentAnimal = myBird;
+
+    currentAnimal.move();
+
+    // Widening Cast --> erweitern der Sichtbarkeit für das tatsächliche Objekt
+    Bird currentBird = (Bird)currentAnimal;
+    currentBird.move();
+    currentBird.tweet();
+
+    /*
+    Object currentObject = currentBird;
+    Animal currentAnimal2 = (Animal)currentObject;
+    Bird currentBird2 = (Bird)currentAnimal2;
+     */
+
+    // Dog currentDog = (Dog)currentAnimal; --> Class Cast Exception
+
+
+    Animal[] animalStable = new Animal[4];
+
+    animalStable[0] = myDog;
+    animalStable[1] = myBird;
+    animalStable[2] = new Dog(50, 30, "Hasso", "Dogge");
+    animalStable[3] = new Bird(6, 4, "Roadrunner", false);
+
+    IO.println("Keep alive routine für Bauer:");
+    for(Animal keepAliveAnimal : animalStable) {
+      IO.println("Keep alive: " + keepAliveAnimal.getDescription());
+      keepAliveAnimal.move();
+      keepAliveAnimal.breath();
+      keepAliveAnimal.eat();
+
+      if(keepAliveAnimal instanceof Dog) {
+        Dog keepAliveDog = (Dog)keepAliveAnimal;
+        keepAliveDog.bark();
+      }else {
+        IO.println(keepAliveAnimal.getDescription() + " ist kein Hund!");
+      }
+
+    }
 
   }
 }

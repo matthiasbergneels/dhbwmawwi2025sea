@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public class Bird extends Animal {
+public final class Bird extends Animal {
 
   private boolean canFly;
 
@@ -11,6 +11,11 @@ public class Bird extends Animal {
 
   public void tweet(){
     IO.println("Der Vogel " + this.getDescription() + " zwitschert! *pieppiep*");
+  }
+
+  @Override
+  public void breath() {
+    IO.println("Der Vogel " + this.getDescription() + " atmet! *quietsch*");
   }
 
   public boolean isCanFly() {
