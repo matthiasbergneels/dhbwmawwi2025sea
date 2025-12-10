@@ -21,8 +21,15 @@ public class TravelAgency {
 
     for(Bookable bookableObject : bookableObjects) {
       IO.println("Freie Plätze: " + bookableObject.freeSlots());
-      bookableObject.bookSlots(2);
+
+      boolean successfullBooking = bookableObject.bookSlots(2);
       IO.println("Freie Plätze: " + bookableObject.freeSlots());
+
+      if(!successfullBooking && bookableObject instanceof PriorityBookable prioBookableObject) {
+        prioBookableObject.priorityBooking(PriorityBookable.PRIO_1, 2);
+      }
+
+
     }
 
 

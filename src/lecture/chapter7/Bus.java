@@ -1,6 +1,6 @@
 package lecture.chapter7;
 
-public class Bus implements Bookable{
+public class Bus implements Bookable, FreeSlotsAskable {
 
   // Belegt = true; Frei = false
   boolean[] seats;

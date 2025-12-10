@@ -1,6 +1,8 @@
 package lecture.chapter7;
 
-public class Hotel implements Bookable {
+import java.io.Serializable;
+
+public class Hotel implements PriorityBookable, Serializable, Comparable {
 
   private int roomCount;
   private int bookedRoomCount;
@@ -28,5 +30,15 @@ public class Hotel implements Bookable {
     bookedRoomCount += slots;
 
     return true;
+  }
+
+  @Override
+  public int compareTo(Object o) {
+    return 0;
+  }
+
+  @Override
+  public boolean priorityBooking(byte priority, int slots) {
+    return false;
   }
 }
