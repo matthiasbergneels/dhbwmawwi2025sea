@@ -76,10 +76,41 @@ public class MyLittleFarm {
       if(keepAliveAnimal instanceof Dog) {
         Dog keepAliveDog = (Dog)keepAliveAnimal;
         keepAliveDog.bark();
-      }else {
+      } else {
         IO.println(keepAliveAnimal.getDescription() + " ist kein Hund!");
       }
 
+      if(keepAliveAnimal instanceof Fish keepAliveFish) {
+        //keepAliveFish.bubble();
+      }
+
+    }
+
+
+    // Alternative ohne Polymorphie
+
+    Dog[] dogStable = new Dog[4];
+    Bird[] birdStable = new Bird[4];
+    Fish[] fishStable = new Fish[4];
+
+    for(Dog keepAliveDog : dogStable) {
+      keepAliveDog.move();
+      keepAliveDog.breath();
+      keepAliveDog.eat();
+
+      keepAliveDog.bark();
+    }
+
+    for(Bird keepAliveBird : birdStable) {
+      keepAliveBird.move();
+      keepAliveBird.breath();
+      keepAliveBird.eat();
+    }
+
+    for(Fish keepAliveFish : fishStable) {
+      keepAliveFish.move();
+      keepAliveFish.breath();
+      keepAliveFish.eat();
     }
 
   }
