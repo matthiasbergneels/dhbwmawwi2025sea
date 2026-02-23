@@ -1,5 +1,7 @@
 package lecture.chapter7;
 
+import lecture.chapter8.NotEnoughFreeSlotsException;
+
 import java.io.Serializable;
 
 public class Hotel implements PriorityBookable, Serializable, Comparable {
@@ -22,9 +24,10 @@ public class Hotel implements PriorityBookable, Serializable, Comparable {
   }
 
   @Override
-  public boolean bookSlots(int slots) {
+  public boolean bookSlots(int slots) throws NotEnoughFreeSlotsException{
     if(freeSlots() < slots) {
-      return false;
+      var notEnoughFreeSlotsException = new NotEnoughFreeSlotsException(slots, freeSlots());
+      throw notEnoughFreeSlotsException;
     }
 
     bookedRoomCount += slots;

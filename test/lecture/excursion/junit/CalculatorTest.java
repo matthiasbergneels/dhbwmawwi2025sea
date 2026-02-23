@@ -99,9 +99,9 @@ class CalculatorTest {
     @ParameterizedTest(name="{0} minus {1} should be {2}")
     @Tag("local")
     @CsvSource({"3,2,1",
-                "5,3,2",
-                "-5.0,3.0,-8.0",
-                "5.0,3.0,2"})
+      "5,3,2",
+      "-5.0,3.0,-8.0",
+      "5.0,3.0,2"})
     void subtract(double numberA, double numberB,  double expectedResult) {
       IO.println("basic subtract test");
       double result = testCalc.subtract(numberA, numberB);

@@ -1,5 +1,7 @@
 package lecture.chapter7;
 
+import lecture.chapter8.NotEnoughFreeSlotsException;
+
 public class Bus implements Bookable, FreeSlotsAskable {
 
   // Belegt = true; Frei = false
@@ -28,9 +30,9 @@ public class Bus implements Bookable, FreeSlotsAskable {
   }
 
   @Override
-  public boolean bookSlots(int slots) {
+  public boolean bookSlots(int slots) throws NotEnoughFreeSlotsException {
     if(this.freeSlots() < slots) {
-      return false;
+      throw new NotEnoughFreeSlotsException(slots, freeSlots());
     }
 
     for(int i = 0; i < slots; i++) {
