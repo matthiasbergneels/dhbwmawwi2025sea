@@ -8,4 +8,8 @@ public class NotEnoughFreeSlotsException extends Exception {
     super("Not enough free slots to book: tried to book " + bookedSlots + " but only " + remainingSlots + " remaining");
     this.remainingSlots = remainingSlots;
   }
+
+  public int getRemainingSlots(){
+    return remainingSlots;
+  }
 }

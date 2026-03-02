@@ -25,6 +25,14 @@ public class Hotel implements PriorityBookable, Serializable, Comparable {
 
   @Override
   public boolean bookSlots(int slots) throws NotEnoughFreeSlotsException{
+
+    /*
+    if(slots == 151) {
+      throw new NullPointerException("Not enough free slots");
+    }
+
+     */
+
     if(freeSlots() < slots) {
       var notEnoughFreeSlotsException = new NotEnoughFreeSlotsException(slots, freeSlots());
       throw notEnoughFreeSlotsException;
