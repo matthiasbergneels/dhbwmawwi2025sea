@@ -4,7 +4,7 @@ import lecture.chapter8.NotEnoughFreeSlotsException;
 
 public class TravelAgency {
 
-  public static void main(String[] args) {
+  public static void main(String[] args)  {
 
     Hotel oneHotel = new Hotel(150);
     Bus flixBus = new Bus(30);
@@ -43,6 +43,7 @@ public class TravelAgency {
       }finally {
         IO.println("Finally läuft IMMER! - hier bitte alle nebötigten Ressourcen wieder aufräumen");
       }
+
     }
 
     IO.println("Jetzt ist die Travel Agency geschlossen!");
