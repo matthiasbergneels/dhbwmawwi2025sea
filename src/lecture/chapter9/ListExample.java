@@ -35,13 +35,42 @@ public class ListExample {
     IO.println("Zweite Iteration mit for-each:");
 
     for(String currentFruit : fruits) {
+
       /*
       if(currentFruit.equals("Orange")) {
-        fruits.remove(currentFruit);
+        int currentIndex = fruits.indexOf(currentFruit);
+        //fruits.remove(currentFruit);
+        fruits.add(currentIndex, "Blau");
       }
+
+       */
+
+
+      /*
+      if(currentFruit.equals("Orange")){
+        fruits.set(fruits.indexOf(currentFruit), "Blau");
+        currentFruit = "Blau";
+      }
+
        */
       IO.println(currentFruit);
     }
+
+    // Inkonsistentes Auslesen mit Zählerschleife beim Löschen von Elementen
+    IO.println("Iteration mit for-Zählerschleife (mit remove - INKONSISTENT):");
+    List<String> fruitsForLoop = new ArrayList<>(fruits);
+    fruitsForLoop.add("Orange");
+    fruitsForLoop.add("Orange");
+    IO.println("Liste vor der Schleife: " + fruitsForLoop);
+    for (int i = 0; i < fruitsForLoop.size(); i++) {
+      String currentFruit = fruitsForLoop.get(i);
+      IO.println("Index " + i + ": " + currentFruit);
+      if (currentFruit.equals("Orange")) {
+        fruitsForLoop.remove(i); // Index verschiebt sich! Nächstes Element wird übersprungen
+      }
+    }
+    IO.println("Liste nach der Schleife: " + fruitsForLoop);
+    IO.println("-> 'Orange'-Einträge wurden nicht vollständig entfernt (Index-Verschiebung!)");
 
     String removedFruit = fruits.remove(0);
     IO.println("Gelöscht: " + removedFruit);
