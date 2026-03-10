@@ -4,6 +4,7 @@ import lecture.chapter5.Car;
 import lecture.chapter5.CarBrand;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -56,6 +57,22 @@ public class ListExample {
       IO.println(currentFruit);
     }
 
+    String removedFruit = fruits.remove(0);
+    IO.println("Gelöscht: " + removedFruit);
+    boolean hasRemoved = fruits.remove("Orange");
+    IO.println("Orange removed? " + hasRemoved);
+
+    IO.println("Zweite Iteration mit Iterator:");
+    Iterator<String> iterator = fruits.iterator();
+    while(iterator.hasNext()) {
+      String currentFruit = iterator.next();
+      if(currentFruit.equals("Orange")) {
+        iterator.remove();
+      }
+      IO.println(currentFruit);
+    }
+
+
     // Inkonsistentes Auslesen mit Zählerschleife beim Löschen von Elementen
     IO.println("Iteration mit for-Zählerschleife (mit remove - INKONSISTENT):");
     List<String> fruitsForLoop = new ArrayList<>(fruits);
@@ -71,21 +88,6 @@ public class ListExample {
     }
     IO.println("Liste nach der Schleife: " + fruitsForLoop);
     IO.println("-> 'Orange'-Einträge wurden nicht vollständig entfernt (Index-Verschiebung!)");
-
-    String removedFruit = fruits.remove(0);
-    IO.println("Gelöscht: " + removedFruit);
-    boolean hasRemoved = fruits.remove("Orange");
-    IO.println("Orange removed? " + hasRemoved);
-
-    IO.println("Zweite Iteration mit Iterator:");
-    Iterator<String> iterator = fruits.iterator();
-    while(iterator.hasNext()) {
-      String currentFruit = iterator.next();
-      if(currentFruit.equals("Orange")) {
-        iterator.remove();
-      }
-      IO.println(currentFruit);
-    }
 
   }
 }
