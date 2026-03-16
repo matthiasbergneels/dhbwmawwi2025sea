@@ -26,6 +26,11 @@ public class CompareEqualsAndHashCode {
     System.out.println("S1 == S3: " + (s1 == s3));
     System.out.println("S1 == S4: " + (s1 == s4));
 
+    System.out.println("hashCode():");
+    System.out.println("S1: " + s1.hashCode());
+    System.out.println("S2: " + s2.hashCode());
+    System.out.println("S3: " + s3.hashCode());
+    System.out.println("S4: " + s4.hashCode());
 
     String text1 = "Hallo";
     String text2 = "Blau";
