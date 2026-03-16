@@ -14,10 +14,17 @@ public class CompareEqualsAndHashCode {
     System.out.println("S1 compareTo S3: " + s1.compareTo(s3));
     System.out.println("S1 compareTo S4: " + s1.compareTo(s4));
 
+
     System.out.println("equals - Vergleich:");
     System.out.println("S1 equals S2: " + s1.equals(s2));
     System.out.println("S1 equals S3: " + s1.equals(s3));
     System.out.println("S1 equals S4: " + s1.equals(s4));
+    System.out.println("S1 equals Karsten: " + s1.equals("Karsten"));
+
+    System.out.println("== - Vergleich:");
+    System.out.println("S1 == S2: " + (s1 == s2));
+    System.out.println("S1 == S3: " + (s1 == s3));
+    System.out.println("S1 == S4: " + (s1 == s4));
 
 
     String text1 = "Hallo";
