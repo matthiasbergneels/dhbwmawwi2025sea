@@ -43,6 +43,13 @@ public class ListSortExample {
       System.out.println(student);
     }
 
+    // Sortierung mit Comparator durch Lambda Funktion
+    Collections.sort(students, (o1, o2) -> {return o1.getAge() - o2.getAge();});
+    System.out.println("Students - by Age:");
+    for(Student student : students) {
+      System.out.println(student);
+    }
+
 
 
   }
