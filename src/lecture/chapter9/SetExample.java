@@ -60,5 +60,19 @@ public class SetExample {
     for(Student student : studentsByAge) {
       System.out.println(student);
     }
+
+
+    // Example with Records
+    Set<Point2D> coordinates = new HashSet<>();
+    coordinates.add(new Point2D(1, 1));
+    coordinates.add(new Point2D(2, 2));
+    coordinates.add(new Point2D(3, 3));
+    coordinates.add(new Point2D(4, 4));
+    coordinates.add(new Point2D(5, 5));
+
+    System.out.println("Sorted by Coordinates: " + coordinates.size());
+    for(Point2D point : coordinates) {
+      System.out.println(point);
+    }
   }
 }
