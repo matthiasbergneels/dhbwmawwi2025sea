@@ -1,5 +1,7 @@
 package lecture.excursion.innerclasses;
 
+import lecture.chapter6.Animal;
+
 public class Outerclass {
 
   private static final String STATIC_ID = "OuterClass ID 42";
@@ -36,7 +38,6 @@ public class Outerclass {
     }
     InnerLocalClass innerLocalClass = new InnerLocalClass();
 
-
     innerLocalClass.printMessage(messageText);
   }
 
@@ -60,6 +61,21 @@ public class Outerclass {
     anonymousObject.printMessage(messageText);
   }
 
+  public void printMessageFromLambdaFunction(String messageText){
+
+    Printable lambdaFunction = (message)-> System.out.println("Message from LambdaFunction: " + message + " - " + STATIC_ID + " - " + INSTANZ_ID + " - ClassContext: " + this.getClass().getName());
+
+    lambdaFunction.printMessage(messageText);
+
+  }
+
+  public static void printStaticMessageFromLambdaFunction(String messageText){
+
+    Printable lambdaFunction = (message)-> System.out.println("Message from LambdaFunction: " + message + " - " + STATIC_ID);
+
+    lambdaFunction.printMessage(messageText);
+
+  }
 
   public static void main() {
     String messageText = "Unsere Nachricht aus verschiedenen Klassen heraus.";
@@ -79,5 +95,9 @@ public class Outerclass {
     firstOuterClass.printSecondMessageFromInnerLocalClass(messageText);
 
     secondOuterClass.printMessageFromInnerAnonymousClass(messageText);
+
+    firstOuterClass.printMessageFromLambdaFunction(messageText);
+
+    printStaticMessageFromLambdaFunction(messageText);
   }
 }
