@@ -1,7 +1,5 @@
 package lecture.excursion.innerclasses;
 
-import lecture.chapter6.Animal;
-
 public class Outerclass {
 
   private static final String STATIC_ID = "OuterClass ID 42";
