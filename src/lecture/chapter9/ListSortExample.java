@@ -2,6 +2,7 @@ package lecture.chapter9;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ListSortExample {
@@ -44,13 +45,23 @@ public class ListSortExample {
     }
 
     // Sortierung mit Comparator durch Lambda Funktion
-    Collections.sort(students, (o1, o2) -> {return o1.getAge() - o2.getAge();});
-    System.out.println("Students - by Age:");
+    Collections.sort(students, (o1, o2) -> {return o2.getAge() -  o1.getAge();});
+    System.out.println("Students - by Age Descending:");
     for(Student student : students) {
       System.out.println(student);
     }
 
 
-
+    // Sortierung mit Comparator durch Anonyme Klassen
+    Collections.sort(students, new Comparator<Student>(){
+      @Override
+      public int compare(Student o1, Student o2) {
+        return o1.getAge() - o2.getAge();
+      }
+    });
+    System.out.println("Students - by Age Ascending:");
+    for(Student student : students) {
+      System.out.println(student);
+    }
   }
 }
