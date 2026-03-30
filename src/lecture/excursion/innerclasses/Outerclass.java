@@ -6,7 +6,7 @@ public class Outerclass {
 
   private final String INSTANZ_ID;
 
-  static interface Printable {
+  interface Printable {
     void printMessage(String message);
   }
 
