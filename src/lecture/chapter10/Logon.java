@@ -15,6 +15,28 @@ public class Logon extends JFrame {
   // Component Name Constants
   private static final String COMPONENT_NAME_PORT_INPUTFIELD = "PORT_INPUTFIELD";
 
+  enum PROTOCOLS{
+    SSH(22), FTP(21), HTTP(80), HTTPS(443);
+
+    private int standardPort;
+
+    PROTOCOLS(int standardPort){
+      this.standardPort = standardPort;
+    }
+
+    public int getStandardPort(){
+      return standardPort;
+    }
+
+    @Override
+    public String toString() {
+      return switch (this) {
+        case HTTPS -> "HTTP(s)";
+        default -> super.toString();
+      };
+    }
+  }
+
   // Instanzattribute
   private final JFormattedTextField portField;
 
@@ -23,10 +45,53 @@ public class Logon extends JFrame {
     this.setTitle("Logon");
     //this.setResizable(false);
 
-    JComboBox<String> myComboBox = new JComboBox<>(new String[]{"SSH", "FTP", "HTTP", "HTTPS"});
+    //JComboBox<String> myComboBox = new JComboBox<>(new String[]{"SSH", "FTP", "HTTP", "HTTPS"});
+    JComboBox<PROTOCOLS> myComboBox = new JComboBox<>(PROTOCOLS.values());
 
     portField = new JFormattedTextField(new MaskFormatter("#####"));
     portField.setColumns(3);
+
+    myComboBox.addItemListener(new ComboBoxEventListener());
+
+    myComboBox.addItemListener((event)->{
+      if(event.getStateChange() == ItemEvent.SELECTED) {
+        System.out.println("Infos - Internal ItemListener Lambda Function");
+        System.out.println("Item: " + event.getItem());
+        System.out.println("State Change: " + event.getStateChange());
+        System.out.println("Parameters: " + event.paramString());
+
+        PROTOCOLS protocolType = (PROTOCOLS) event.getItem();
+        portField.setText("" + protocolType.getStandardPort());
+
+        /*if(protocolType.equals(PROTOCOLS.SSH)){
+          portField.setText("" + protocolType.getStandardPort());
+        }else if(protocolType.equals(PROTOCOLS.FTP)){
+          portField.setText("21");
+        }else if(protocolType.equals(PROTOCOLS.HTTP)){
+          portField.setText("80");
+        }else if(protocolType.equals(PROTOCOLS.HTTPS)){
+          portField.setText("443");
+        }
+
+         */
+      }
+
+      System.out.println("Item Event Verarbeitung - " + Thread.currentThread());
+    });
+
+    /* --> ItemListener als Anonyme Klasse
+    myComboBox.addItemListener(new ItemListener() {
+      @Override
+      public void itemStateChanged(ItemEvent e) {
+        if(e.getStateChange() == ItemEvent.SELECTED) {
+          System.out.println("Item: " + e.getItem());
+          System.out.println("State Change: " + e.getStateChange());
+          System.out.println("Parameters: " + e.paramString());
+        }
+
+      }
+    });
+     */
 
     // initialize Panels
     JPanel mainPanel = new JPanel(new BorderLayout());
