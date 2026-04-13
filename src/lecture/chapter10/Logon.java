@@ -15,6 +15,9 @@ public class Logon extends JFrame {
   // Component Name Constants
   private static final String COMPONENT_NAME_PORT_INPUTFIELD = "PORT_INPUTFIELD";
 
+  private final String ACTION_LOGIN = "LOGIN";
+  private final String ACTION_BEENDEN = "CLOSE";
+
   enum PROTOCOLS{
     SSH(22), FTP(21), HTTP(80), HTTPS(443);
 
@@ -153,16 +156,41 @@ public class Logon extends JFrame {
 
     // create & assign Buttons
     JButton okButton = new JButton("Login");
+    okButton.setActionCommand(ACTION_LOGIN);
     JButton cancelButton = new JButton("Beenden");
+    cancelButton.setActionCommand(ACTION_BEENDEN);
 
     ActionListener buttonActionListener = (actionEvent)->{
       System.out.println("Infos zu Button Action:");
       System.out.println("Action Command: " + actionEvent.getActionCommand());
       System.out.println("Timestamp: " + actionEvent.getWhen());
-      System.out.println("Modifiers: " + actionEvent.getModifiers());
+      System.out.println("Modifiers: " + actionEvent.getModifiers() + " - " + Integer.toBinaryString(actionEvent.getModifiers()));
       System.out.println("Parameter String: " + actionEvent.paramString());
 
-      System.exit(0);
+      /* --> Funktioniert aber nur für genau diesen Button
+      if(actionEvent.getSource() == cancelButton){
+        System.exit(0);
+      }
+       */
+
+      System.out.println("Steuerung: " + ActionEvent.CTRL_MASK + " - " + Integer.toBinaryString(ActionEvent.CTRL_MASK));
+      System.out.println("Alt / Option: " + ActionEvent.ALT_MASK + " - " + Integer.toBinaryString(ActionEvent.ALT_MASK));
+      System.out.println("Windows / Command: " + ActionEvent.META_MASK + " - " + Integer.toBinaryString(ActionEvent.META_MASK));
+      System.out.println("Shift: " + ActionEvent.SHIFT_MASK + " - " + Integer.toBinaryString(ActionEvent.SHIFT_MASK));
+
+      // Beispiel:
+      // Modifier   10100 (Command gedrückt)
+      // META_MASK &00100
+      //            00100 --> Identisch zur Maske, also wurde die Taste gedrückt
+      if((actionEvent.getModifiers() & ActionEvent.META_MASK) == ActionEvent.META_MASK){
+        System.out.println(" -> Windows Taste / Command Taste gedrückt!");
+      }
+
+      if(actionEvent.getActionCommand().equals(ACTION_BEENDEN)){
+        System.exit(0);
+      }else if(actionEvent.getActionCommand().equals(ACTION_LOGIN)){
+        System.out.println("Login mit Protokoll: " + myComboBox.getSelectedItem() + " auf Port: " + portField.getText());
+      }
     };
 
     okButton.addActionListener(buttonActionListener);
@@ -170,6 +198,38 @@ public class Logon extends JFrame {
 
     southPanel.add(okButton);
     southPanel.add(cancelButton);
+
+    // Lambda Funktion nicht möglich --> mehrere Methoden im Interface zu implementieren
+    okButton.addMouseListener(new MouseListener() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mousePressed(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseEntered(MouseEvent e) {
+        JButton currentButton = (JButton)e.getSource();
+        currentButton.setText("Nicht drücken!");
+
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+        JButton currentButton = (JButton)e.getSource();
+        currentButton.setText("Login");
+
+      }
+    });
 
     // create and assign Borders
     Border etchedBorder = BorderFactory.createEtchedBorder();
@@ -189,6 +249,41 @@ public class Logon extends JFrame {
     mainPanel.add(southPanel, BorderLayout.SOUTH);
 
     this.add(mainPanel);
+
+    // add JMenuBar --> Swing Menü
+    JMenuBar logonMenuBar = new JMenuBar();
+    JMenu fileMenu = new JMenu("Datei");
+    JMenuItem loginMenuItem = new JMenuItem("Einloggen");
+    loginMenuItem.setActionCommand(ACTION_LOGIN);
+    loginMenuItem.addActionListener(buttonActionListener);
+    JMenuItem closeMenuItem = new JMenuItem("Schliessen");
+    closeMenuItem.setActionCommand(ACTION_BEENDEN);
+    closeMenuItem.addActionListener(buttonActionListener);
+
+    fileMenu.add(loginMenuItem);
+    fileMenu.add(closeMenuItem);
+
+    logonMenuBar.add(fileMenu);
+
+    this.setJMenuBar(logonMenuBar);
+
+    // add Menubar --> AWT
+    MenuBar logonMenuBarAWT = new MenuBar();
+    Menu fileMenuAWT = new Menu("Datei");
+    MenuItem loginMenuItemAWT = new MenuItem("Einloggen");
+    loginMenuItemAWT.setActionCommand(ACTION_LOGIN);
+    loginMenuItemAWT.addActionListener(buttonActionListener);
+    MenuItem closeMenuItemAWT = new MenuItem("Schliessen");
+    closeMenuItemAWT.setActionCommand(ACTION_BEENDEN);
+    closeMenuItemAWT.addActionListener(buttonActionListener);
+
+    fileMenuAWT.add(loginMenuItemAWT);
+    fileMenuAWT.add(closeMenuItemAWT);
+
+    logonMenuBarAWT.add(fileMenuAWT);
+
+    this.setMenuBar(logonMenuBarAWT);
+
 
     // set JFrame behavior
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
