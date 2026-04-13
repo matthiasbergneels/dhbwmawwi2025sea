@@ -155,6 +155,19 @@ public class Logon extends JFrame {
     JButton okButton = new JButton("Login");
     JButton cancelButton = new JButton("Beenden");
 
+    ActionListener buttonActionListener = (actionEvent)->{
+      System.out.println("Infos zu Button Action:");
+      System.out.println("Action Command: " + actionEvent.getActionCommand());
+      System.out.println("Timestamp: " + actionEvent.getWhen());
+      System.out.println("Modifiers: " + actionEvent.getModifiers());
+      System.out.println("Parameter String: " + actionEvent.paramString());
+
+      System.exit(0);
+    };
+
+    okButton.addActionListener(buttonActionListener);
+    cancelButton.addActionListener(buttonActionListener);
+
     southPanel.add(okButton);
     southPanel.add(cancelButton);
 
