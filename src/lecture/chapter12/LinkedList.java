@@ -1,13 +1,13 @@
 package lecture.chapter12;
 
-public class LinkedList {
+public class LinkedList<E> {
 
   private Node firstNode;
   private Node lastNode;
 
   private int size;
 
-  public void add(int data){
+  public void add(E data){
     Node newNode = new Node(data);
     size++;
 
@@ -43,7 +43,7 @@ public class LinkedList {
     return counter;
   }
 
-  public void add(int data, int index){
+  public void add(E data, int index){
     Node newNode = new Node(data);
     size++;
 
@@ -66,7 +66,7 @@ public class LinkedList {
     currentNode.setNext(newNode);
   }
 
-  public boolean contains(int data){
+  public boolean contains(E data){
     if(firstNode == null){
       return false;
     }
@@ -103,7 +103,7 @@ public class LinkedList {
 
   }
 
-  public boolean remove(int data){
+  public boolean remove(E data){
 
     if(firstNode != null && firstNode.getData() == data){
       firstNode = firstNode.getNextNode();
@@ -129,10 +129,10 @@ public class LinkedList {
 
 
   private class Node{
-    private int data;
+    private E data;
     private Node nextNode;
 
-    Node(int data){
+    Node(E data){
       this.data = data;
     }
 
@@ -144,7 +144,7 @@ public class LinkedList {
       return nextNode;
     }
 
-    int getData(){
+    E getData(){
       return data;
     }
   }

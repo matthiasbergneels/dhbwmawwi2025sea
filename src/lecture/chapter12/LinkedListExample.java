@@ -4,7 +4,7 @@ public class LinkedListExample {
 
   static void main() {
 
-    LinkedList numberList = new LinkedList();
+    LinkedList<Integer> numberList = new LinkedList<Integer>();
 
     System.out.println("Anzahl Elemente: " + numberList.size());
     numberList.printList();
@@ -68,6 +68,14 @@ public class LinkedListExample {
     numberList.printList();
 
 
+
+    LinkedList<String> nameList = new LinkedList<>();
+
+    nameList.add("Klaus");
+    nameList.add("Gabi");
+    nameList.add("Michaela");
+
+    nameList.printList();
 
     System.out.println("Fertig!");
 
