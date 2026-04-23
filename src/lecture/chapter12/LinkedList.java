@@ -3,9 +3,13 @@ package lecture.chapter12;
 public class LinkedList {
 
   private Node firstNode;
+  private Node lastNode;
+
+  private int size;
 
   public void add(int data){
     Node newNode = new Node(data);
+    size++;
 
     if(firstNode == null){
       firstNode = newNode;
@@ -21,20 +25,105 @@ public class LinkedList {
   }
 
   public int size(){
-    // TODO gib die größe der Liste aus
-    return 0;
+    return size;
+  }
+
+  public int sizeCounting(){
+
+    if (firstNode == null){
+      return 0;
+    }
+
+    Node currentNode = firstNode;
+    int counter = 1;
+    while(currentNode.getNextNode() != null){
+      currentNode = currentNode.getNextNode();
+      counter++;
+    }
+    return counter;
   }
 
   public void add(int data, int index){
-    // TODO füge Datenelement an index ein
+    Node newNode = new Node(data);
+    size++;
+
+    if(index == 0){
+      newNode.setNext(firstNode);
+      firstNode = newNode;
+      return;
+    }
+
+    Node currentNode = firstNode;
+    while(index-- > 1){
+      currentNode = currentNode.getNextNode();
+      if(currentNode == null){
+        size--;
+        throw new IndexOutOfBoundsException();
+      }
+    }
+
+    newNode.setNext(currentNode.getNextNode());
+    currentNode.setNext(newNode);
   }
 
+  public boolean contains(int data){
+    if(firstNode == null){
+      return false;
+    }
+
+    Node currentNode = firstNode;
+    if(currentNode.getData() == data){
+      return true;
+    }
+    while(currentNode.getNextNode() != null){
+      if(currentNode.getNextNode().getData() == data){
+        return true;
+      }
+      currentNode = currentNode.getNextNode();
+    }
+
+    return false;
+  }
+
+
   public void printList(){
-    // TODO vollständige Liste ausgeben
+    if(firstNode == null){
+      System.out.println("Liste ist leer!");
+      return;
+    }
+
+    System.out.println("Listen Inhalt:");
+    Node currentNode = firstNode;
+    while(currentNode.getNextNode() != null){
+      System.out.print(currentNode.data + " ");
+      currentNode = currentNode.getNextNode();
+    }
+
+    System.out.println(currentNode.getData());
+
   }
 
   public boolean remove(int data){
-    // TODO lösche erste gefunden Element dieser Daten
+
+    if(firstNode != null && firstNode.getData() == data){
+      firstNode = firstNode.getNextNode();
+      size--;
+      return true;
+    }
+
+    Node currentNode = firstNode;
+    while(currentNode.getNextNode() != null){
+
+      if(currentNode.getNextNode().getData() == data){
+        currentNode.setNext(currentNode.getNextNode().getNextNode());
+        size--;
+        return true;
+      }
+
+      currentNode = currentNode.getNextNode();
+    }
+
+
     return false;
   }
 
