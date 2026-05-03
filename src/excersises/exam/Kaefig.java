@@ -1,11 +1,11 @@
 package excersises.exam;
 
-public class Käfig {
+public class Kaefig {
 
   private double ccm;
   private Tier bewohner;
 
-  public Käfig(double ccm) {
+  public Kaefig(double ccm) {
     this.ccm = ccm;
   }
 

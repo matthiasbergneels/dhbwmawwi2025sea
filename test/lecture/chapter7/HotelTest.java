@@ -42,9 +42,7 @@ class HotelTest {
     Hotel hotelUnderTest = new Hotel(150);
 
     // Act & Assert
-    NotEnoughFreeSlotsException e = assertThrows(NotEnoughFreeSlotsException.class, () -> {
-      hotelUnderTest.bookSlots(hotelUnderTest.freeSlots()+1);
-    });
+    NotEnoughFreeSlotsException e = assertThrows(NotEnoughFreeSlotsException.class, () -> hotelUnderTest.bookSlots(hotelUnderTest.freeSlots()+1));
 
     assertEquals(hotelUnderTest.freeSlots(), e.getRemainingSlots());
   }
