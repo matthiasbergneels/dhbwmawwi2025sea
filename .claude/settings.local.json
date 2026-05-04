@@ -3,7 +3,9 @@
     "allow": [
       "Bash(cat src/lecture/chapter4/UserInput.java)",
       "Bash(cat src/excersises/chapter4/UserInput.java)",
-      "Bash(grep -E \"^SEC-100$|^SEC-215$|^SEC-237$|^SEC-239$|^SEC-246$\")"
+      "Bash(grep -E \"^SEC-100$|^SEC-215$|^SEC-237$|^SEC-239$|^SEC-246$\")",
+      "Read(//Users/d041670/.m2/repository/org/junit/jupiter/junit-jupiter/**)",
+      "Read(//Users/d041670/.m2/repository/org/junit/jupiter/junit-jupiter/5.14.0/**)"
     ]
   }
 }
